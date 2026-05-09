@@ -70,6 +70,12 @@
     });
   }
 
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.body.classList.remove('is-preload');
+    }, 100);
+  });
+
   /**
    * Scroll top button
    */
@@ -229,5 +235,35 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
+
+  /**
+   * Legacy intro fade on scroll
+   */
+  const legacyIntro = document.querySelector('#legacy-intro');
+  const legacyIntroHeader = document.querySelector('.legacy-intro-header');
+  const legacyIntroBg = document.querySelector('.legacy-intro-bg');
+  const legacyIntroOverlay = document.querySelector('.legacy-intro-overlay');
+
+  function updateLegacyIntro() {
+    if (!legacyIntro || !legacyIntroHeader || !legacyIntroBg || !legacyIntroOverlay) return;
+
+    const maxScroll = Math.max(legacyIntro.offsetHeight * 0.68, 1);
+    const progress = Math.min(window.scrollY / maxScroll, 1);
+    const introOpacity = Math.max(1 - progress * 1.45, 0);
+    const bgScale = 1.125 - progress * 0.18;
+    const bgBlur = progress * 0.42;
+
+    legacyIntro.style.opacity = String(Math.max(1 - progress * 0.92, 0));
+    legacyIntro.style.transform = `translateY(${progress * -44}px) scale(${1 - progress * 0.2})`;
+    legacyIntroHeader.style.opacity = String(introOpacity);
+    legacyIntroHeader.style.transform = `translateY(${progress * -52}px) scale(${1 - progress * 0.18})`;
+    legacyIntroHeader.style.filter = `blur(${progress * 0.18}rem)`;
+    legacyIntroBg.style.transform = `scale(${bgScale})`;
+    legacyIntroBg.style.filter = `blur(${bgBlur}rem)`;
+    legacyIntroOverlay.style.opacity = String(Math.max(1 - progress * 0.46, 0.42));
+  }
+
+  window.addEventListener('load', updateLegacyIntro);
+  document.addEventListener('scroll', updateLegacyIntro);
 
 })();

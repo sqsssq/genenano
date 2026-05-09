@@ -6,6 +6,8 @@
 * License: https://bootstrapmade.com/license/
 */
 
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,600italic,300,600");
+
 /*--------------------------------------------------------------
 # Font & Color Variables
 # Help: https://bootstrapmade.com/color-system/
@@ -143,12 +145,17 @@ h6 {
 # Global Header
 --------------------------------------------------------------*/
 .header {
-  --background-color: #0f0000;
+  --background-color: transparent;
   --default-color: #ffffff;
   --heading-color: #ffffff;
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 15px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 10px 0;
   transition: all 0.5s;
   z-index: 997;
 }
@@ -158,16 +165,16 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 36px;
-  margin-right: 8px;
+  max-height: 32px;
+  margin-right: 10px;
 }
 
 .header .logo h1 {
-  font-size: 30px;
+  font-size: 26px;
   margin: 0;
   font-weight: 700;
   color: var(--heading-color);
-  padding-bottom: 5px;
+  padding-bottom: 0;
 }
 
 .header .logo h1 span {
@@ -199,13 +206,13 @@ h6 {
   }
 
   .header .logo h1 {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .header .btn-getstarted {
     order: 2;
     margin: 0 15px 0 0;
-    padding: 6px 15px;
+    padding: 5px 14px;
   }
 
   .header .navmenu {
@@ -823,6 +830,327 @@ section,
   position: relative;
   overflow: hidden;
   padding-bottom: 119px;
+}
+
+/*--------------------------------------------------------------
+# Legacy Intro Section
+--------------------------------------------------------------*/
+.legacy-intro {
+  position: relative;
+  min-height: 100vh;
+  padding: 0;
+  overflow: hidden;
+  background: #1b1f22;
+  transform-origin: center top;
+  transition: transform 0.325s ease-in-out, opacity 0.325s ease-in-out;
+}
+
+.legacy-intro-bg,
+.legacy-intro-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.legacy-intro-bg {
+  z-index: 1;
+  background: center / cover no-repeat url("../img/intro-bg.jpg");
+  transform: scale(1.125);
+  transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
+  will-change: transform, filter, opacity;
+}
+
+.legacy-intro-overlay {
+  z-index: 2;
+  background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("../img/overlay.png");
+  background-size: auto, 256px 256px;
+  background-position: center, center;
+  background-repeat: no-repeat, repeat;
+  transition: background-color 2.5s ease-in-out;
+}
+
+.legacy-intro-wrapper {
+  position: relative;
+  z-index: 3;
+  min-height: 100vh;
+  width: 100%;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.legacy-intro-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  text-align: center;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.25) 25%, rgba(0, 0, 0, 0) 55%);
+  transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
+  will-change: transform, filter, opacity;
+}
+
+.legacy-intro-header > * {
+  position: relative;
+  margin-top: 3.5rem;
+  transition: opacity 0.325s ease-in-out;
+}
+
+.legacy-intro-header > *::before {
+  content: "";
+  position: absolute;
+  top: calc(-3.5rem - 1px);
+  left: calc(50% - 1px);
+  width: 1px;
+  height: calc(3.5rem + 1px);
+  background: #ffffff;
+}
+
+.legacy-intro-header > :first-child {
+  margin-top: 0;
+}
+
+.legacy-intro-header > :first-child::before {
+  display: none;
+}
+
+.legacy-intro-logo {
+  width: 5.5rem;
+  height: 5.5rem;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.legacy-intro-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.25rem;
+}
+
+.legacy-intro-content {
+  max-width: 100%;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+}
+
+.legacy-intro-inner {
+  padding: 3rem 2rem;
+  max-height: 40rem;
+  overflow: hidden;
+  transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
+  transition-delay: 0.25s;
+}
+
+.legacy-intro-inner h1,
+.legacy-intro-inner p,
+.legacy-intro-nav a,
+.legacy-intro-hint a {
+  font-family: "Source Sans Pro", sans-serif;
+  color: #ffffff;
+}
+
+.legacy-intro-inner h1 {
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  font-size: 2.25rem;
+}
+
+.legacy-intro-inner p {
+  margin: 0;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 1rem;
+  line-height: 2;
+}
+
+.legacy-intro-nav ul {
+  display: flex;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+}
+
+.legacy-intro-nav li {
+  border-left: 1px solid #ffffff;
+}
+
+.legacy-intro-nav li:first-child {
+  border-left: 0;
+}
+
+.legacy-intro-nav a {
+  display: block;
+  min-width: 9rem;
+  height: 2.75rem;
+  line-height: 2.75rem;
+  padding: 0 1.5rem 0 1.7rem;
+  border-bottom: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 0.8rem;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.legacy-intro-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.075);
+}
+
+.legacy-intro-nav a:active {
+  background-color: rgba(255, 255, 255, 0.175);
+}
+
+.legacy-intro-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 2rem;
+  transform: translateX(-50%);
+  width: max-content;
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+}
+
+.legacy-intro-hint a {
+  border-bottom: 0;
+  text-decoration: none;
+  letter-spacing: 0.2rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.legacy-intro-hint i {
+  display: inline-block;
+  margin-left: 0.45rem;
+  animation: legacy-intro-bounce 1.8s ease-in-out infinite;
+}
+
+body.is-preload .legacy-intro-overlay {
+  background-color: #8ab1e4;
+}
+
+body.is-preload .legacy-intro-header {
+  filter: blur(0.125rem);
+}
+
+body.is-preload .legacy-intro-header > * {
+  opacity: 0;
+}
+
+body.is-preload .legacy-intro-inner {
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+}
+
+@keyframes legacy-intro-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@media (max-width: 1680px) {
+  .legacy-intro-wrapper {
+    padding: 3rem 2rem;
+  }
+}
+
+@media (max-width: 980px) {
+  .legacy-intro-inner p br {
+    display: none;
+  }
+}
+
+@media (max-width: 736px) {
+  .legacy-intro-wrapper {
+    padding: 2rem 1rem;
+  }
+
+  .legacy-intro-header > * {
+    margin-top: 2rem;
+  }
+
+  .legacy-intro-header > *::before {
+    top: calc(-2rem - 1px);
+    height: calc(2rem + 1px);
+  }
+
+  .legacy-intro-logo {
+    width: 4.75rem;
+    height: 4.75rem;
+  }
+
+  .legacy-intro-inner {
+    padding: 2.5rem 1rem;
+  }
+
+  .legacy-intro-inner h1 {
+    font-size: 1.75rem;
+    line-height: 1.4;
+  }
+
+  .legacy-intro-inner p {
+    line-height: 1.875;
+    font-size: 0.92rem;
+  }
+
+  .legacy-intro-hint a {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .legacy-intro-wrapper {
+    padding: 1rem;
+  }
+
+  .legacy-intro-header {
+    padding: 1.5rem 0;
+  }
+
+  .legacy-intro-inner {
+    padding: 2.5rem 0;
+  }
+
+  .legacy-intro-nav ul {
+    flex-direction: column;
+    min-width: 10rem;
+    max-width: 100%;
+  }
+
+  .legacy-intro-nav li {
+    border-left: 0;
+    border-top: 1px solid #ffffff;
+  }
+
+  .legacy-intro-nav li:first-child {
+    border-top: 0;
+  }
+
+  .legacy-intro-nav a {
+    min-width: 0;
+    width: 100%;
+    height: 3rem;
+    line-height: 3rem;
+  }
 }
 
 .hero .hero-content h2 {
@@ -2593,6 +2921,8 @@ section,
   border-radius: 1rem;
   transition: all 0.3s ease;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .pricing .pricing-card:hover {
@@ -2709,6 +3039,7 @@ section,
   justify-content: center;
   gap: 0.5rem;
   font-weight: 500;
+  margin-top: auto;
 }
 
 .pricing .pricing-card .btn.btn-primary {
